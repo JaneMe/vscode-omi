@@ -51,7 +51,7 @@ function activate(context) {
 		range => jsonOutlineProvider.select(range)
 	);
     //工程依赖模块菜单功能
-	const nodeDependenciesProvider = new dep.DepNodeProvider(vscode.workspace.rootPath);
+	const nodeDependenciesProvider = new dep.DepNodeProvider();
     vscode.window.registerTreeDataProvider('nodeDependencies', nodeDependenciesProvider);
     vscode.commands.registerCommand('nodeDependencies.refreshEntry', () => nodeDependenciesProvider.refresh());
     vscode.commands.registerCommand('extension.openPackageOnNpm', moduleName => vscode.commands.executeCommand('vscode.open', vscode.Uri.parse(`https://www.npmjs.com/package/${moduleName}`)));
