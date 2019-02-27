@@ -7,11 +7,11 @@ const hover = require("./hover/index");  //鼠标悬停提示功能模块
 const jump = require("./jump/index");  //跳转功能模块
 
 
-const filex = require("./filex/index");  //文件管理功能模块
-const ayjson = require("./ayjson/index");  //json文件解析功能模块
-const dep = require("./dependencies/index");  //json文件解析功能模块
-const wv = require('./webview/index');  //导入模块并在下面的代码中使用别名vscode引用它(模块“vscode”包含VS代码可扩展性API)
-const cmd = require("./command/index");  //命令模块
+const filex = require("./filex/index");  //文件管理功能模块(test)
+const ayjson = require("./ayjson/index");  //json文件解析功能模块(test)
+const dep = require("./dependencies/index");  //工程依赖模块菜单功能模块(test)
+const wv = require('./webview/index');  //Webview功能模块(test)
+const cmd = require("./command/index");  //命令模块(test)
 
 
 /**

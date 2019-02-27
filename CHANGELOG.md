@@ -7,7 +7,7 @@
 
 ### Bug Fixes
 
-- null
+- Solve the file name special case "examples/simple" identification problem.
 ---
 ## Version 1.0.5 February 27, 2019
 
