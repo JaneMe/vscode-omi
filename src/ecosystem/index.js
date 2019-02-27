@@ -264,6 +264,9 @@ class EcoProvider {
             }
             //let fpnls = $('a[class=js-navigation-open]');
             let fpnls = $('td[class=content]').find('a');  //获取文件名和文件链接节点
+            //文件名特殊情况"examples/simple"
+            
+            //普通情况
             for(let i = 0; i < fpnls.length; i++) {
                 data.filePathsNames.push(fpnls.eq(i).html());
                 data.filePathlinks.push('https://github.com'+fpnls.eq(i).attr('href'));
