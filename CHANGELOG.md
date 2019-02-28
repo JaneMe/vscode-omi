@@ -1,15 +1,15 @@
 # Omi for Visual Studio Code Change Log (Develop)
-## Version *
+
+## Version 1.0.6 February 28, 2019
 
 ### New Features
 
 - Json supports editing window to jump to the specified range.
-- ...
+- Add menu node one-click folding function.
 
 ### Bug Fixes
 
 - Solve the file name special case "examples/simple" identification problem.
-- ...
 
 ---
 ## Version 1.0.5 February 27, 2019

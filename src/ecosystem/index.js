@@ -314,15 +314,6 @@ class EcoProvider {
         }
     }
 
-    collapseNodeAll() {
-        //正在开发
-        vscode.window.showInformationMessage(`Developing...`);
-        // this.context.workspaceState.update('expanded', false).then(
-        //     this.context.workspaceState.update('expandedNodes', {})
-        // );
-        
-    }
-
     /**
      * 异步读取并解析网站内容
      * @param url 网址

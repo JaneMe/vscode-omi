@@ -23,14 +23,13 @@ const cmd = require("./command/index");  //命令模块(test)
 function activate(context) {
 	//omi生态更新、下载、项目创建(创建项目包含在线和离线两种方式)
 	const ecoProvider = new eco.EcoProvider(context);
-	context.subscriptions.push(vscode.window.registerTreeDataProvider('omi.view.ecosystem', ecoProvider));  //omi生态内容注册
+	//context.subscriptions.push(vscode.window.registerTreeDataProvider('omi.view.ecosystem', ecoProvider));  //omi生态内容注册(无法添加showCollapseAll功能)
+	//omi生态内容创建和注册(用此方法可添加showCollapseAll功能)
+	context.subscriptions.push(vscode.window.createTreeView('omi.view.ecosystem', { treeDataProvider: ecoProvider, showCollapseAll: true }));
 	context.subscriptions.push(vscode.commands.registerCommand('omi.cmd.ecoRefresh', () => ecoProvider.refreshAll()));  //刷新所有菜单节点
 	context.subscriptions.push(vscode.commands.registerCommand('omi.cmd.ecoRefreshNode', offset => ecoProvider.refreshDesignation(offset)));  //刷新指定菜单节点
-	context.subscriptions.push(vscode.commands.registerCommand( 'omi.cmd.ecoCollapse', () => ecoProvider.collapseNodeAll()));  //收起菜单所有展节点(正在开发)
 	context.subscriptions.push(vscode.commands.registerCommand('omi.cmd.openGithub', nodeLink => vscode.commands.executeCommand('vscode.open', vscode.Uri.parse(nodeLink))));
 	
-	
-
 	//鼠标悬停提示功能
 	const provideHover = hover.provideHover;
 	context.subscriptions.push(vscode.languages.registerHoverProvider(['json', 'javascript', 'tex'], { provideHover }));  //鼠标悬停提示功能注册
@@ -45,7 +44,11 @@ function activate(context) {
 	new filex.FileExplorer(context);
 	//json文件解析功能
 	const jsonOutlineProvider = new ayjson.JsonOutlineProvider(context);
-    vscode.window.registerTreeDataProvider('jsonOutline1', jsonOutlineProvider);
+	//vscode.window.registerTreeDataProvider('jsonOutline1', jsonOutlineProvider);
+	vscode.window.createTreeView('jsonOutline1', {
+		treeDataProvider: jsonOutlineProvider,
+		showCollapseAll: true
+	});
     vscode.commands.registerCommand('jsonOutline1.refresh', () => jsonOutlineProvider.refresh());
     vscode.commands.registerCommand('jsonOutline1.refreshNode', offset => jsonOutlineProvider.refresh(offset));
     vscode.commands.registerCommand('jsonOutline1.renameNode', offset => jsonOutlineProvider.rename(offset));
@@ -55,7 +58,11 @@ function activate(context) {
 	);
     //工程依赖模块菜单功能
 	const nodeDependenciesProvider = new dep.DepNodeProvider();
-    vscode.window.registerTreeDataProvider('nodeDependencies', nodeDependenciesProvider);
+	//vscode.window.registerTreeDataProvider('nodeDependencies', nodeDependenciesProvider);
+	vscode.window.createTreeView('nodeDependencies', {
+		treeDataProvider: nodeDependenciesProvider,
+		showCollapseAll: true
+	});
     vscode.commands.registerCommand('nodeDependencies.refreshEntry', () => nodeDependenciesProvider.refresh());
     vscode.commands.registerCommand('extension.openPackageOnNpm', moduleName => vscode.commands.executeCommand('vscode.open', vscode.Uri.parse(`https://www.npmjs.com/package/${moduleName}`)));
     vscode.commands.registerCommand('nodeDependencies.addEntry', () => vscode.window.showInformationMessage(`Successfully called add entry.`));

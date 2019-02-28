@@ -3,7 +3,7 @@
 	"displayName": "omi-develop",
 	"description": "Omi for Visual Studio Code (develop)",
 	"license": "Omi",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"publisher": "ZainChen",
 	"author": {
 		"name": "ZainChen"
@@ -20,10 +20,53 @@
 	"keywords": [
 		"zain",
 		"ZainChen",
-		"omi",
+		"zy",
+		"银",
 		"志银",
+		"陈志银",
+		"陈志振",
+		"omi",
+		"json",
+		"html",
+		"css",
+		"javascript",
+		"js",
+		"nodejs",
+		"github",
+		"gitlab",
+		"git",
+		"c",
+		"C++",
+		"web",
+		"js",
+		"npm",
+		"python",
+		"java",
+		"Ruby",
+		"webpack",
+		"php",
+		"mysql",
+		"sql",
+		"apache",
+		"nginx",
+		"iis",
+		"wordpress",
+		"hexo",
 		"tencent",
-		"nodejs"
+		"linux",
+		"window",
+		"mac",
+		"vs",
+		"google",
+		"markdown",
+		"xml",
+		"run",
+		"commands",
+		"view",
+		"diff",
+		"tree",
+		"compare",
+		"vscode"
 	],
 	"categories": [
 		"Snippets",
@@ -39,7 +82,6 @@
 		"onView:jsonOutline1",
 		"onCommand:omi.cmd.ecoRefresh",
 		"onCommand:omi.cmd.ecoRefreshNode",
-		"onCommand:omi.cmd.ecoCollapse",
 		"onCommand:omi.cmd.help",
 		"onCommand:omi.cmd.webview",
 		"onLanguage:c",
@@ -81,15 +123,6 @@
 					"dark": "./assets/dark/refresh.svg"
 				}
 			},
-			{
-                "command": "omi.cmd.ecoCollapse",
-                "title": "omi ecosystem collapse",
-                "category": "ecosystem",
-                "icon": {
-                    "dark": "./assets/dark/collapse.svg",
-                    "light": "./assets/light/collapse.svg"
-                }
-            },
 			{
 				"command": "omi.cmd.help",
 				"title": "omi help",
@@ -272,17 +305,12 @@
 				{
 					"command": "omi.cmd.ecoRefresh",
 					"when": "view == omi.view.ecosystem",
-					"group": "navigation@1"
-				},
-				{
-					"command": "omi.cmd.ecoCollapse",
-					"when": "view == omi.view.ecosystem",
 					"group": "navigation@2"
 				},
 				{
 					"command": "omi.cmd.help",
 					"when": "view == omi.view.ecosystem",
-					"group": "navigation@3"
+					"group": "navigation@1"
 				},
 				{
 					"command": "omi.cmd.webview",
