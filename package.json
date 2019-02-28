@@ -36,9 +36,10 @@
 		"onView:omi.view.ecosystem",
 		"onView:fileExplorer",
 		"onView:omi.nodeDependencies",
-		"onView:jsonOutline",
+		"onView:jsonOutline1",
 		"onCommand:omi.cmd.ecoRefresh",
 		"onCommand:omi.cmd.ecoRefreshNode",
+		"onCommand:omi.cmd.ecoCollapse",
 		"onCommand:omi.cmd.help",
 		"onCommand:omi.cmd.webview",
 		"onLanguage:c",
@@ -80,6 +81,15 @@
 					"dark": "./assets/dark/refresh.svg"
 				}
 			},
+			{
+                "command": "omi.cmd.ecoCollapse",
+                "title": "omi ecosystem collapse",
+                "category": "ecosystem",
+                "icon": {
+                    "dark": "./assets/dark/collapse.svg",
+                    "light": "./assets/light/collapse.svg"
+                }
+            },
 			{
 				"command": "omi.cmd.help",
 				"title": "omi help",
@@ -125,7 +135,7 @@
 				"title": "Delete"
 			},
 			{
-				"command": "jsonOutline.refresh",
+				"command": "jsonOutline1.refresh",
 				"title": "Refresh",
 				"icon": {
 					"light": "./assets/light/refresh.svg",
@@ -133,7 +143,7 @@
 				}
 			},
 			{
-				"command": "jsonOutline.refreshNode",
+				"command": "jsonOutline1.refreshNode",
 				"title": "Refresh",
 				"icon": {
 					"light": "./assets/light/refresh.svg",
@@ -141,7 +151,7 @@
 				}
 			},
 			{
-				"command": "jsonOutline.renameNode",
+				"command": "jsonOutline1.renameNode",
 				"title": "Rename"
 			},
 			{
@@ -222,7 +232,7 @@
 					"name": "File Explorer"
 				},
 				{
-					"id": "jsonOutline",
+					"id": "jsonOutline1",
 					"name": "json",
 					"when": "jsonOutlineEnabled"
 				},
@@ -262,7 +272,21 @@
 				{
 					"command": "omi.cmd.ecoRefresh",
 					"when": "view == omi.view.ecosystem",
-					"group": "navigation"
+					"group": "navigation@1"
+				},
+				{
+					"command": "omi.cmd.ecoCollapse",
+					"when": "view == omi.view.ecosystem",
+					"group": "navigation@2"
+				},
+				{
+					"command": "omi.cmd.help",
+					"when": "view == omi.view.ecosystem",
+					"group": "navigation@3"
+				},
+				{
+					"command": "omi.cmd.webview",
+					"when": "view == omi.view.ecosystem"
 				},
 				{
 					"command": "nodeDependencies.refreshEntry",
@@ -274,18 +298,9 @@
 					"when": "view == nodeDependencies"
 				},
 				{
-					"command": "jsonOutline.refresh",
-					"when": "view == jsonOutline",
+					"command": "jsonOutline1.refresh",
+					"when": "view == jsonOutline1",
 					"group": "navigation"
-				},
-				{
-					"command": "omi.cmd.help",
-					"when": "view == omi.view.ecosystem",
-					"group": "navigation"
-				},
-				{
-					"command": "omi.cmd.webview",
-					"when": "view == omi.view.ecosystem"
 				}
 			],
 			"view/item/context": [
@@ -304,12 +319,12 @@
 					"when": "view == nodeDependencies && viewItem == dependency"
 				},
 				{
-					"command": "jsonOutline.renameNode",
-					"when": "view == jsonOutline"
+					"command": "jsonOutline1.renameNode",
+					"when": "view == jsonOutline1"
 				},
 				{
-					"command": "jsonOutline.refreshNode",
-					"when": "view == jsonOutline",
+					"command": "jsonOutline1.refreshNode",
+					"when": "view == jsonOutline1",
 					"group": "inline"
 				}
 			]

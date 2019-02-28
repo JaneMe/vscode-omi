@@ -22,11 +22,14 @@ const cmd = require("./command/index");  //命令模块(test)
  */
 function activate(context) {
 	//omi生态更新、下载、项目创建(创建项目包含在线和离线两种方式)
-	const ecoProvider = new eco.EcoProvider();
+	const ecoProvider = new eco.EcoProvider(context);
 	context.subscriptions.push(vscode.window.registerTreeDataProvider('omi.view.ecosystem', ecoProvider));  //omi生态内容注册
-	vscode.commands.registerCommand('omi.cmd.ecoRefresh', () => ecoProvider.refresh());
-	vscode.commands.registerCommand('omi.cmd.ecoRefreshNode', offset => ecoProvider.refresh(offset));
-	vscode.commands.registerCommand('omi.cmd.openGithub', nodeLink => vscode.commands.executeCommand('vscode.open', vscode.Uri.parse(nodeLink)));
+	context.subscriptions.push(vscode.commands.registerCommand('omi.cmd.ecoRefresh', () => ecoProvider.refreshAll()));  //刷新所有菜单节点
+	context.subscriptions.push(vscode.commands.registerCommand('omi.cmd.ecoRefreshNode', offset => ecoProvider.refreshDesignation(offset)));  //刷新指定菜单节点
+	context.subscriptions.push(vscode.commands.registerCommand( 'omi.cmd.ecoCollapse', () => ecoProvider.collapseNodeAll()));  //收起菜单所有展节点(正在开发)
+	context.subscriptions.push(vscode.commands.registerCommand('omi.cmd.openGithub', nodeLink => vscode.commands.executeCommand('vscode.open', vscode.Uri.parse(nodeLink))));
+	
+	
 
 	//鼠标悬停提示功能
 	const provideHover = hover.provideHover;
@@ -42,12 +45,12 @@ function activate(context) {
 	new filex.FileExplorer(context);
 	//json文件解析功能
 	const jsonOutlineProvider = new ayjson.JsonOutlineProvider(context);
-    vscode.window.registerTreeDataProvider('jsonOutline', jsonOutlineProvider);
-    vscode.commands.registerCommand('jsonOutline.refresh', () => jsonOutlineProvider.refresh());
-    vscode.commands.registerCommand('jsonOutline.refreshNode', offset => jsonOutlineProvider.refresh(offset));
-    vscode.commands.registerCommand('jsonOutline.renameNode', offset => jsonOutlineProvider.rename(offset));
+    vscode.window.registerTreeDataProvider('jsonOutline1', jsonOutlineProvider);
+    vscode.commands.registerCommand('jsonOutline1.refresh', () => jsonOutlineProvider.refresh());
+    vscode.commands.registerCommand('jsonOutline1.refreshNode', offset => jsonOutlineProvider.refresh(offset));
+    vscode.commands.registerCommand('jsonOutline1.renameNode', offset => jsonOutlineProvider.rename(offset));
     vscode.commands.registerCommand(
-		'extension.openJsonSelection',
+		'extension1.openJsonSelection',
 		range => jsonOutlineProvider.select(range)
 	);
     //工程依赖模块菜单功能
